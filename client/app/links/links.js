@@ -6,6 +6,6 @@ angular.module('shortly.links', [])
   });
 
   $scope.redirect = function(code){
-    Links.redirect(code);
+    window.location = '/api/links/'+code;
   };
 });
