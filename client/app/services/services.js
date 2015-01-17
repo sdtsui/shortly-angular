@@ -1,7 +1,26 @@
 angular.module('shortly.services', [])
 
 .factory('Links', function ($http) {
-  // Your code here
+  var links = {};
+  links.fetch = function(cb){
+    $http.get('/api/links')
+    .success(function(data, status, headers, config){
+      cb(data);
+    })
+    .error(function(data, status, headers, config){
+      console.log('failed to get links', status, data);
+    });
+  };
+  links.save = function(url){
+    $http.post('/api/links', {url: url})
+    .success(function(data, status, headers, config){
+      console.log('saved link', data);
+    })
+    .error(function(data, status, headers, config){
+      console.log('failed to save link', status, data);
+    });
+  }
+  return links;
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
