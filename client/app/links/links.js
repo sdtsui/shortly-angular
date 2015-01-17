@@ -4,4 +4,8 @@ angular.module('shortly.links', [])
   Links.fetch(function(links){
     $scope.links = links;
   });
+
+  $scope.redirect = function(code){
+    Links.redirect(code);
+  };
 });

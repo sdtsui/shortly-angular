@@ -72,12 +72,16 @@ module.exports = {
   },
 
   navToLink: function (req, res, next) {
+    console.log('in nav')
+    var cors = {"Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "POST, GET, OPTIONS"};
     var link = req.navLink;
     link.visits++;
     link.save(function (err, savedLink) {
       if (err) {
         next(err);
       } else {
+        res.writeHead(200, cors);
         res.redirect(savedLink.url);
       }
     });

@@ -3,10 +3,18 @@
 // in our signup/signin forms using the injected Auth service
 angular.module('shortly.auth', [])
 
-.controller('AuthController', function ($scope, $window, $location, Auth) {
+.controller('AuthController', function ($scope, $window, $location, $sanitize, Auth) {
   $scope.user = {};
 
+  $scope.sanitizeCredentials =  function(credentials) {
+    return {
+        username: $sanitize(credentials.username),
+        password: $sanitize(credentials.password)
+    };
+  };
+
   $scope.signin = function () {
+    $scope.user = $scope.sanitizeCredentials($scope.user);
     Auth.signin($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.shortly', token);
@@ -18,6 +26,7 @@ angular.module('shortly.auth', [])
   };
 
   $scope.signup = function () {
+    $scope.user = $scope.sanitizeCredentials($scope.user);
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.shortly', token);

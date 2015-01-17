@@ -19,6 +19,15 @@ angular.module('shortly.services', [])
     .error(function(data, status, headers, config){
       console.log('failed to save link', status, data);
     });
+  };
+  links.redirect = function(code){
+    $http.get('/'+code)
+    .success(function(data, status, headers, config){
+      console.log('redirect', data);
+    })
+    .error(function(data, status, headers, config){
+      console.log('failed to redirect link', status, data);
+    });
   }
   return links;
 })

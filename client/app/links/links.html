@@ -1,7 +1,9 @@
 <div id='container'>
+  <input class='searchyThing' type='text' ng-model:'urlSearch'>Filter URLs</input>
   <div class='links'>
-    <div class='link' ng-repeat='link in links'>
-      <img src='../assets/redirect_icon.png'/>
+    <div class='link' ng-repeat='link in links | filter:urlSearch | orderBy:link.visits'>
+      {{ urlSearch }}
+      <img ng-src='../assets/redirect_icon.png' ng-click='redirect(link.code);'>
       <div class='info'>
         <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
         <div class='title'>{{link.title}}</div>
