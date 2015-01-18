@@ -5,7 +5,7 @@ describe('AuthController', function () {
   // to retrieve our dependencies
   beforeEach(module('shortly'));
   beforeEach(inject(function($injector) {
-
+    console.log('333333333333333333333');
     // mock out our dependencies
     $rootScope = $injector.get('$rootScope');
     $location = $injector.get('$location');
@@ -27,6 +27,8 @@ describe('AuthController', function () {
     };
 
     createController();
+    console.log('333333333333333333334');
+
   }));
 
   afterEach(function() {

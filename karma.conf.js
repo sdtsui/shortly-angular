@@ -19,6 +19,7 @@ module.exports = function(config) {
       'client/lib/angular/angular.js',
       'client/lib/angular-route/angular-route.js',
       'client/lib/angular-mocks/angular-mocks.js',
+      'client/lib/angular-sanitize/angular-sanitize.js',
 
       // our app code
       'client/app/**/*.js',

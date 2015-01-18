@@ -1,6 +1,6 @@
 "use strict";
 
-describe('LinksController', function () {
+xdescribe('LinksController', function () {
   var $scope, $rootScope, createController, Links, $httpBackend;
 
   // using angular mocks, we can inject the injector
@@ -22,6 +22,7 @@ describe('LinksController', function () {
         Links: Links
       });
     };
+    console.log('5555555555555555555');
   }));
 
   it('should have a data property on the $scope', function() {
